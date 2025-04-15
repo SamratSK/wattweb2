@@ -1,0 +1,39 @@
+.flx {
+
+  &,
+  &--full {
+    display: flex;
+  }
+
+  &--full,
+  &--col {
+    flex-direction: column;
+  }
+
+  &--full,
+  &--1 {
+    flex: 1;
+  }
+
+  &--c,
+  &--ac {
+    align-items: center;
+  }
+
+  &--c,
+  &--jc {
+    justify-content: center;
+  }
+}
+
+.base-comp {
+
+  &,
+  &:has(:only-child) > .container{
+    display: flex;
+  }
+  
+  &:has(:only-child) > .container{
+    flex: 1;
+  }
+}

@@ -1,0 +1,64 @@
+@use "../vars" as vars;
+
+@mixin button-base($clr-bg, $clr-fg, $clr-hov-bg, $clr-hov-fg) {
+  cursor: pointer;
+
+  color: $clr-fg;
+  background-color: $clr-bg;
+
+  border: 0;
+  border-radius: vars.$borderRadDefault;
+
+  padding: 1rem 1.75rem;
+
+  font-family: inherit;
+  font-size: 0.98rem;
+
+  transition: background-color vars.$durDefault, color vars.$durDefault;
+
+  &:not(:disabled):hover {
+    @if $clr-hov-bg {
+      color: $clr-hov-fg;
+    }
+
+    @if $clr-hov-bg {
+      background-color: $clr-hov-bg;
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    transition: none;
+    filter: brightness(var(--btn-disabled-filter-brightness));
+  }
+}
+
+.btn {
+  @include button-base(var(--clr-highlight), var(--clr-highlight-fg), var(--clr-highlight-hov-bg), null);
+
+  &--action {
+    font-weight: bold;
+    @include button-base(var(--clr-action), var(--clr-action-fg), var(--clr-action-hov-bg), null);
+  }
+  
+  &--link {
+    font-weight: bold;
+    @include button-base(var(--clr-link), var(--clr-link-fg), var(--clr-link-hov-bg), null);
+  }
+
+  &--menu {
+    @include button-base(var(--clr-menu), var(--clr-menu-fg), var(--clr-menu-hov-bg), var(--clr-menu-hov-fg));
+  }
+
+  &--error {
+    @include button-base(rgb(212, 44, 44), var(--clr-menu-fg), rgb(169, 35, 35), null);
+  }
+
+  &--success {
+    @include button-base(green, var(--clr-menu-fg), rgb(0, 86, 0), null);
+  }
+
+  &--capsule {
+    border-radius: 100vmax;
+  }
+}

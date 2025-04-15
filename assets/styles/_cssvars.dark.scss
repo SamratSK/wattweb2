@@ -1,0 +1,53 @@
+@use "sass:color";
+
+@mixin css-dark {
+  $clr-action: #FFCF59;
+  $clr-highlight: #535FE1;
+  $clr-bg: #1a1a1a;
+
+  --clr-bg: #1a1a1a;
+  --clr-fg: #{color.scale(#f9fafa, $lightness: -10%)};
+  --clr-heading: #F1F1F1;
+
+  --clr-action: #{$clr-action};
+  --clr-action-transparent: rgba(249, 217, 138, 0.2);
+  --clr-action-fg: #1a1a1a;
+  --clr-action-hov-bg: #{color.scale($clr-action, $lightness: -10%)};
+
+  --clr-highlight: #{$clr-highlight};
+  --clr-highlight-transparent: rgba(162, 168, 240, 0.15);
+  --clr-highlight-fg: #1a1a1a;
+  --clr-highlight-hov-bg: #{color.scale($clr-highlight, $lightness: -15%)};
+
+  --clr-link: transparent;
+  --clr-link-transparent: rgba(162, 168, 240, 0.2);
+  --clr-link-fg: #F1F1F1;
+  --clr-link-hov-bg: rgba(162, 200, 255, 0.1);
+
+  --clr-menu: transparent;
+  --clr-menu-fg: #{color.scale(#f9fafa, $lightness: -10%)};
+  --clr-menu-hov-bg: rgba(162, 200, 255, 0.15);
+  --clr-menu-hov-fg: #{color.scale(#f9fafa, $lightness: 10%)};
+
+  --btn-disabled-filter-brightness: 0.5;
+
+  --clr-input: #333333;
+  --clr-input-fg: #f9fafa;
+  --input-disabled-filter-brightness: 0.3;
+
+  --link-disabled-filter-brightness: 0.4;
+
+  --clr-card-bg: #2a2a2a;
+  --clr-card-fg: #{color.scale(#f9fafa, $lightness: -10%)};
+  --clr-card-heading: #ffffff;
+  --clr-card-shadow: #{color.scale($clr-bg, $lightness: 10%)};
+  --clr-card-shadow-hov: #{color.scale($clr-bg, $lightness: 30%)};
+}
+
+
+:root.dark {
+  @include css-dark();
+  
+  color: var(--clr-fg);
+  background-color: var(--clr-bg);
+}
